@@ -20,8 +20,7 @@ def recSetBitsCount(n, count):
         return count
     if n == -1:
         return count + 1
-    else:
-        return recSetBitsCount(n >> 1, count + (n & 1))
+    return recSetBitsCount(n >> 1, count + (n & 1))
 
 
 n = int(input())
