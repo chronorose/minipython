@@ -1,6 +1,16 @@
+def isPow2Neg(n):
+    if n == 0:
+        return False
+    while n != -1:
+        if n % 2 != 0:
+            return False
+        n = n // 2
+    return True
+
+
 def setBitsCount(n):
     count = 0
-    if n == -1 or (n < 0 and n % 2 == 0):
+    if n == -1 or (n < 0 and isPow2Neg(n)):
         return recSetBitsCount(n, count + 1)
     return recSetBitsCount(n, count)
 
