@@ -1,4 +1,4 @@
-a = {"a": 12, "b": 13, "c": 13}
+a = {(1, 2): "a", (3, 4): "a", (5, 6): "a", 5: "a"}
 
 
 def dict_swap(dict):
@@ -13,9 +13,11 @@ def dict_swap(dict):
         else:
             new_entry = ()
             for j in list:
-                new_entry = new_entry + tuple(j)
+                new_entry = new_entry + (j, )
             new_dict[i] = new_entry
     return new_dict
 
 
 print(dict_swap(a))
+
+print((1, 2) + (3, 2))
