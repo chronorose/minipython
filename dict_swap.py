@@ -2,7 +2,7 @@ a = {(1, 2): "a", (3, 4): "a", (5, 6): "a", 5: "a", 4: "a",
      6: "b", 9: "b", 10: "c"}
 
 
-def dict_swap(dict):
+def dict_swap_2(dict):
     new_dict = {}
     for key, val in dict.items():
         try:
@@ -17,7 +17,7 @@ def dict_swap(dict):
     return new_dict
 
 
-def dict_swap_2(dict):
+def dict_swap_3(dict):
     new_dict = {}
     uniq_holder = set()
     for key, val in dict.items():
@@ -33,3 +33,4 @@ def dict_swap_2(dict):
 
 
 print(dict_swap_2(a))
+print(dict_swap_3(a))
