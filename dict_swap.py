@@ -1,9 +1,11 @@
-a = {(1, 2): "a", (3, 4): "a", (5, 6): "a", 5: "a"}
+a = {(1, 2): "a", (3, 4): "a", (5, 6): "a", 5: "a", 4: "a", 6: "b", 9: "b"}
 
 
 def dict_swap(dict):
     new_dict = {}
     for i in dict.values():
+        if i in new_dict:
+            continue
         list = []
         for j in dict.keys():
             if dict[j] == i:
@@ -19,5 +21,3 @@ def dict_swap(dict):
 
 
 print(dict_swap(a))
-
-print((1, 2) + (3, 2))
