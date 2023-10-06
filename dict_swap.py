@@ -17,4 +17,19 @@ def dict_swap(dict):
     return new_dict
 
 
-print(dict_swap(a))
+def dict_swap_2(dict):
+    new_dict = {}
+    uniq_holder = set()
+    for key, val in dict.items():
+        if val in uniq_holder:
+            new_dict[val] = (new_dict[val], ) + (key, )
+            uniq_holder.remove(val)
+        elif val in new_dict.keys():
+            new_dict[val] = new_dict[val] + (key, )
+        else:
+            new_dict[val] = key
+            uniq_holder.add(val)
+    return new_dict
+
+
+print(dict_swap_2(a))
