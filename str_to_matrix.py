@@ -13,4 +13,3 @@ a = "1 2.34 3 | 4 5 6 | 7 8 9 "
 b = str_to_matrix(a)
 print(b)
 print(b[0][1])
-print(type(b[0][1]))
