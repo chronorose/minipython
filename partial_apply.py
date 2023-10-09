@@ -1,16 +1,31 @@
+import doctest
+
+
 def sum(x, y):
+    """
+    >>> sum(1, 2)
+    3
+    >>> sum(8, 8)
+    16
+    """
     return x + y
 
 
 def specialize(func, *args, **kwargs):
-    def wrapper(*args1, **kwargs1):
-        return func(*args, *args1, **kwargs, **kwargs1)
+    """this is a function that performs partial application pattern
+    :param func: function for you to perform partial application on
+    :return: function that has new amount of arguments
+    """
+    def wrapper(*inside_args, **inside_kwargs):
+        return func(*args, *inside_args, **kwargs, **inside_kwargs)
     return wrapper
 
 
-plus_one = specialize(sum, 1)
-sum_wrapper = specialize(sum)
-six = specialize(sum, 1, 5)
-print(plus_one(10))
-print(sum_wrapper(1, 5))
-print(six())
+if __name__ == "__main__":
+    plus_one = specialize(sum, 1)
+    sum_wrapper = specialize(sum)
+    six = specialize(sum, 1, 5)
+    print(plus_one(10))
+    print(sum_wrapper(1, 5))
+    print(six())
+    doctest.testmod()
