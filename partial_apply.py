@@ -22,6 +22,7 @@ def specialize(func, *args, **kwargs):
 
 
 if __name__ == "__main__":
+    # tests
     plus_one = specialize(sum, 1)
     sum_wrapper = specialize(sum)
     six = specialize(sum, 1, 5)
