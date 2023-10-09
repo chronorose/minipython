@@ -13,6 +13,12 @@ def flattening(elem, new_list, depth):
 
 
 def flatten(list, depth=-1):
+    """
+    function that flattens incoming list with the specified depth
+    (or until there are no sub-lists left)
+    :param list: list to flatten
+    :param depth: depth of flattening
+    """
     new_list = []
     for i in list:
         i = flattening(i, new_list, depth)
