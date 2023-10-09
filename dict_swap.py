@@ -22,7 +22,7 @@ def dict_swap(dict):
     uniq_holder = set()
     for key, val in dict.items():
         if val in uniq_holder:
-            new_dict[val] = (new_dict[val], ) + (key, )
+            new_dict[val] = (new_dict[val], key)
             uniq_holder.remove(val)
         elif val in new_dict.keys():
             new_dict[val] = new_dict[val] + (key, )
