@@ -8,5 +8,9 @@ def specialize(func, *args, **kwargs):
     return wrapper
 
 
-plus_one = specialize(sum, 1, 1)
-print(plus_one())
+plus_one = specialize(sum, 1)
+sum_wrapper = specialize(sum)
+six = specialize(sum, 1, 5)
+print(plus_one(10))
+print(sum_wrapper(1, 5))
+print(six())
