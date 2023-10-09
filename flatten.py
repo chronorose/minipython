@@ -7,7 +7,7 @@ def flattening(elem, new_list, depth):
     """
     if isinstance(elem, list) and depth != 0:
         for i in elem:
-            i = flattening(i, new_list, depth - 1)
+            flattening(i, new_list, depth - 1)
     else:
         new_list.append(elem)
 
@@ -21,7 +21,7 @@ def flatten(list, depth=-1):
     """
     new_list = []
     for i in list:
-        i = flattening(i, new_list, depth)
+        flattening(i, new_list, depth)
     return new_list
 
 
