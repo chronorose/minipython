@@ -29,4 +29,4 @@ def flatten(list, depth=-1):
 
 
 print(flatten(a))
-print(flatten(a, 1))
+print(flatten(a, depth=1))
