@@ -1,10 +1,10 @@
-def str_generate(xs, indent, sep="", start=" ", finish=" ", палка="|"):
+def str_generate(string, indent, sep="", start=" ", finish=" ", палка="|"):
     str = палка
-    if isinstance(xs, list):
-        for i in range(len(xs)):
-            str += f"{start}{xs[i]:{sep}<{indent[i]}}{finish}|"
+    if isinstance(string, list):
+        for i in range(len(string)):
+            str += f"{start}{string[i]:{sep}<{indent[i]}}{finish}|"
     else:
-        str += f"{start}{xs:{sep}<{indent}}{finish}|"
+        str += f"{start}{string:{sep}<{indent}}{finish}|"
     return str
 
 
