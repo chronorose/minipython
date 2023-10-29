@@ -15,7 +15,7 @@ def format(cases, benchmarks, case_times):
     for i in range(1, len(benchmarks)):
         indents[i] = len(benchmarks[i]) if len(benchmarks[i]) >= 4 else 4
     print(str_generate(benchmarks, indents))
-    print(str_generate(xs="", sep="-", start="", finish="",
+    print(str_generate(string="", sep="-", start="", finish="",
                        indent=(sum(indents) + 3 * len(benchmarks) - 1)))
     for i in range(1, len(cases) + 1):
         for j in range(len(benchmarks)):
@@ -27,6 +27,6 @@ def format(cases, benchmarks, case_times):
         print(string)
 
 
-format(["best case", "the worst case"],
+format(["best case", "the worst case   "],
        ["quick sort", "quack sort", "ooo"], [[1.23, 1.56, 2.0],
                                              [3.3, 2.9, 3.92]])
