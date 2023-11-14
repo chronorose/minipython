@@ -15,6 +15,8 @@ class LRUCache:
 
     def get(self, key):
         try:
+            value = self.cache.pop(key)
+            self.cache[key] = value
             return self.cache[key]
         except KeyError:
             return None
@@ -30,3 +32,4 @@ cache.put(2, 3)
 cache.put(3, 3)
 print(cache.get(3))
 print(cache.get(4))
+print(cache.get(20))
