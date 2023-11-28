@@ -18,7 +18,7 @@ def deprecated(f=None, *, since=None, will_be_removed=None):
     return inner
 
 
-@deprecated(since=14.1)
+@deprecated
 def lol():
     print("lol")
 
