@@ -52,11 +52,9 @@ gameOfLife(n_matrix)
 gameOfLife(matrix)
 
 
-endgame_sum_python = 0
-endgame_sum_numpy = 0
-for i in range(size):
-    for j in range(size):
-        endgame_sum_python += matrix[i][j]
-        endgame_sum_numpy += n_matrix[i][j]
+endgame_sum_python = sum(matrix[i][j]
+                         for i in range(size) for j in range(size))
+endgame_sum_numpy = sum(n_matrix[i][j]
+                        for i in range(size) for j in range(size))
 
 print(endgame_sum_python == endgame_sum_numpy)
