@@ -1,10 +1,11 @@
 import numpy as np
-import matplotlib as mpl
+from random import randint
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 import time
 # 713 seconds for numpy
 # 251 seconds for default python
+size = 1024
+plot = True
 
 
 def timer(f):
@@ -20,7 +21,10 @@ def timer(f):
 
 @timer
 def gameOfLife(matrix):
-    for iteration in range(128):
+    if plot:
+        fig, ax = plt.subplots()
+        plt.ion()
+    for _ in range(128):
         for i in range(size):
             for j in range(size):
                 sum = checkNeighbours(matrix, i, j)
@@ -28,56 +32,25 @@ def gameOfLife(matrix):
                     matrix[i][j] = 1
                 else:
                     matrix[i][j] = 0
-        plt.imshow(matrix)
+        if plot:
+            ax.clear()
+            ax.matshow(matrix)
+            plt.pause(1)
+    if plot:
+        plt.close()
 
 
 def checkNeighbours(matrix, i, j):
-    sum = checkCell(matrix, i + 1, j)
-    sum += checkCell(matrix, i - 1, j)
-    sum += checkCell(matrix, i, j + 1)
-    sum += checkCell(matrix, i, j - 1)
-    sum += checkCell(matrix, i + 1, j + 1)
-    sum += checkCell(matrix, i - 1, j + 1)
-    sum += checkCell(matrix, i + 1, j - 1)
-    sum += checkCell(matrix, i - 1, j - 1)
+    return sum(matrix[(i + k) % len(matrix)][(j + h) % len(matrix)]
+               for k in range(-1, 2) for h in range(-1, 2) if k != 0 or h != 0)
 
 
-def checkCell(matrix, i, j):
-    return matrix[i % 1024][j % 1024]
-
-
-matrix = []
-size = 1024
-for i in range(size):
-    row = [0 for i in range(size)]
-    matrix.append(row)
-
-matrix[100][100] = 1
-matrix[100][101] = 1
-matrix[100][102] = 1
-matrix[101][102] = 1
-matrix[102][101] = 1
-n_matrix = []
-for i in range(size):
-    n_row = [0 for i in range(size)]
-    n_matrix.append(n_row)
-n_matrix[100][100] = 1
-n_matrix[100][101] = 1
-n_matrix[100][102] = 1
-n_matrix[101][102] = 1
-n_matrix[102][101] = 1
-n_matrix = np.array(n_matrix)
-
+matrix = [[randint(0, 1) for _ in range(size)] for _ in range(size)]
+n_matrix = np.random.choice(a=[0, 1], size=(size, size)).tolist()
 
 gameOfLife(n_matrix)
 gameOfLife(matrix)
 
-plt.axis('off')
-fig = plt.figure()
-anime = animation.FuncAnimation(fig, gameOfLife,
-                                interval=50, save_count=50)
-plt.show()
-anime()
 
 endgame_sum_python = 0
 endgame_sum_numpy = 0
