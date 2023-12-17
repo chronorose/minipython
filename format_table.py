@@ -9,13 +9,15 @@ def str_generate(string, indent, sep="", start=" ", finish=" ", палка="|"):
 
 
 def format(cases, benchmarks, case_times):
-    # print(list(map(len, list(map(str, case_times[0])))))
     benchmarks.insert(0, "Benchmark")
     indents = [0 for i in range(0, len(benchmarks) + 1)]
     indents[0] = max(max(map(len, map(str, cases))), len(benchmarks[0]))
     for i in range(1, len(benchmarks)):
-        leni = max(max(map(len, list(map(str, case_times[i - 1])))),
-                   len(benchmarks[i]))
+        maxn = 0
+        for j in range(len(cases)):
+            print(case_times[j][i - 1])
+            maxn = max(maxn, len(str(case_times[j][i - 1])))
+        leni = max(maxn, len(benchmarks[i]))
         indents[i] = leni if leni >= 4 else 4
     print(str_generate(benchmarks, indents))
     print(str_generate(string="", sep="-", start="", finish="",
@@ -31,5 +33,5 @@ def format(cases, benchmarks, case_times):
 
 
 format(["b", "th"],
-       ["quick sort", "quack sort"], [[1.23, 1.56123123123132, 2.0],
-                                             [3.3, 2.9, 3.92]])
+       ["quick sort", "quack sort", "he"], [[1.23, 1.56123123123132, 2.0],
+                                             [3.3, 2.9, 3.92123123123]])
